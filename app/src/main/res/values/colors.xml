@@ -6,4 +6,6 @@
 
     <color name="dimgray">#696969</color><!--暗灰色 -->
     <color name="yellow">#FFFF00</color><!--黄色 -->
+    <color name="violet">#EE82EE</color><!--紫罗兰色 -->
+    <color name="darkred">#8B0000</color><!--暗红色 -->
 </resources>
