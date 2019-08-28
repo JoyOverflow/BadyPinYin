@@ -43,6 +43,7 @@
                   android:textSize="30sp"
                   android:padding = "10sp"
                   android:textColor="@color/yellow"/>
+        <!--删除图像默认隐藏-->
         <ImageView android:id = "@+id/imgDelete"
                    android:src = "@drawable/delete"
                    android:layout_width="wrap_content"

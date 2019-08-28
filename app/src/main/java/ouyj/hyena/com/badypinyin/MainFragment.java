@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import ouyj.hyena.com.badypinyin.data.AlphabetAdapter;
 
@@ -27,6 +29,9 @@ public class MainFragment extends Fragment
     //字母表数组
     private String[] alphabetList;
     private String alphabets = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,ü,w,x,y,z,¯,ˊ,ˇ,ˋ";
+
+    private TextView txtPinyin;
+    private ImageView imgDelete;
 
     /**
      * 构造方法
@@ -49,6 +54,13 @@ public class MainFragment extends Fragment
         final View v = inflater.inflate(R.layout.fragment_main, container, false);
 
 
+        txtPinyin = v.findViewById(R.id.txtPinYin);
+        imgDelete = v.findViewById(R.id.imgDelete);
+
+
+
+
+
         //查找网格视图的引用
         gridView =  v.findViewById(R.id.gridView);
         //创建自定义适配器
@@ -59,10 +71,29 @@ public class MainFragment extends Fragment
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //目前已有的拼音文本（已输入）
+                String havePinyin = txtPinyin.getText().toString();
+
                 //当前被点击的字母
                 String content = alphabetList[position];
-                String tmp=String.format("当前被点击的字母：%s", content);
+                String tmp=String.format("目前已有拼音：%s；当前被点击字母：%s", havePinyin,content);
                 Log.d(MainActivity.TAG, tmp);
+
+                //当ü遇到j,q,x,y时要去掉它两点
+                if (content.equals("ü") &&
+                        (havePinyin.contains("j") ||
+                                havePinyin.contains("q") ||
+                                havePinyin.contains("x") ||
+                                havePinyin.contains("y"))) {
+                    content = "u";
+                }
+
+
+
+
+
+
             }
         });
 
