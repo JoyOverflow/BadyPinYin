@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BottleFlip</string>
+    <string name="img_name">Bottle</string>
+    <string name="btn_name">Flip</string>
+</resources>
